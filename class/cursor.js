@@ -23,21 +23,36 @@ class Cursor {
   }
 
   up() {
-    // Move cursor up
+    // console.log(`before: ${this.row}, ${this.col}`);
+    if (this.row !== 0) {
+      this.row--;
+    }
+    // console.log(`after up(): ${this.row}, ${this.col}`);
   }
 
   down() {
-    // Move cursor down
+    // console.log(`before: ${this.row}, ${this.col}`);
+    if (this.row !== this.numRows - 1) {
+      this.row++;
+    }
+    // console.log(`after down(): ${this.row}, ${this.col}`);
   }
 
   left() {
-    // Move cursor left
+    // console.log(`before: ${this.row}, ${this.col}`);
+    if (this.col !== 0) {
+      this.col--;
+    }
+    // console.log(`after left(): ${this.row}, ${this.col}`);
   }
 
   right() {
-    // Move cursor right
+    // console.log(`before: ${this.row}, ${this.col}`);
+    if (this.col !== this.numCols - 1) {
+      this.col++;
+    }
+    // console.log(`after right(): ${this.row}, ${this.col}`);
   }
-
 }
 
 
