@@ -17,15 +17,32 @@ class TTT {
     Screen.initialize(3, 3);
     Screen.setGridlines(true);
 
-    // Replace this with real commands
-    Screen.addCommand('t', 'test command (remove)', TTT.testCommand);
+/*     // Replace this with real commands
+    Screen.addCommand('t', 'test command (remove)', TTT.testCommand); */
+    Screen.addCommand('u', 'move cursor up', this.cursor.up);
+    Screen.addCommand('d', 'move cursor down', this.cursor.down);
+    Screen.addCommand('r', 'move cursor right', this.cursor.right);
+    Screen.addCommand('l', 'move cursor left', this.cursor.left);
+    Screen.addCommand('m', 'mark the current position', this.putMark);
 
     Screen.render();
   }
 
-  // Remove this
+/*   // Remove this
   static testCommand() {
     console.log("TEST COMMAND");
+  } */
+
+  putMark = () => {
+    Screen.setGrid(this.cursor.row, this.cursor.col, this.playerTurn);
+    this.grid[this.cursor.row][this.cursor.col] = this.playerTurn;
+
+    this.playerTurn = this.playerTurn === 'O' ? 'X' : 'O';
+
+    const gameState = TTT.checkWin(this.grid);
+    if (gameState) {
+      TTT.endGame(gameState);
+    }
   }
 
   static checkRow(grid) {
